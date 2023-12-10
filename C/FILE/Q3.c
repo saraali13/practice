@@ -13,7 +13,7 @@ int main() {
     {
     	printf("%s",arr);
 	}
-	fseek(fptr,20,SEEK_SET);
+	
 	  fprintf(fptr,"%s","hello 123");
 	printf("written");
 	fclose(fptr);
