@@ -11,9 +11,9 @@ void MergeAndWrite()
 		exit(EXIT_FAILURE);
 	}
 	char ch;
-	While (ch=fgets(f1)!=EOF)
+	While (ch=fgetc(f1)!=EOF)
 	   fputs(ch,f3);
-	While (ch=fgets(f2)!=EOF)
+	While (ch=fgetc(f2)!=EOF)
 	   fputs(ch,f3);
 	fclose(f1);
 	fclose(f2);
