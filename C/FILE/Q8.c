@@ -8,7 +8,7 @@ void AddCatagory()
 	FILE *ptr1=fopen("catagory.txt","a");
 	//taking input 
 	printf("enter catagory name and ID\n");
-	scanf("%s %d",C_Name[20],C_ID);
+	scanf("%s %d",C_Name[20],&C_ID);
 	if (ptr1==NULL)
 	{
 		printf("error");
@@ -26,13 +26,13 @@ void AddProducts()
 	FILE *ptr2=fopen("product.txt","a");
 	//taking input 
 	printf("enter product name ,price and ID\n");
-	scanf("%s %f %d",P_Name[20],P_Price,P_ID);
+	scanf("%s %f %d",P_Name[20],&P_Price,&P_ID);
 	if (ptr2==NULL)
 	{
 		printf("error");
 		exit(EXIT_FAILURE); //file doesnot exsit
 	}// end if
-	fprintf(ptr1,"%s %f %d \n",P_Name,P_Price,P_ID);
+	fprintf(ptr2,"%s %f %d \n",P_Name,P_Price,P_ID);
 	printf("written in file product.txt\n");
 	fclose(ptr2);
 }//end AddProduct
@@ -52,15 +52,16 @@ void GenerateFinalResult()
 	float P_Price;//product price
 	int P_ID;//product ID
  
-	
-	
-	While (!feof(ptr1))//till end of catagory file
+	fseek(ptr1,0,SEEK_SET);
+	while (!feof(ptr1))//till end of catagory file
 	{ 
-	  fscanf(ptr1,"%s %d",C_Name,C_ID);
+	  fscanf(ptr1,"%s %d",C_Name,&C_ID);
 	  fprintf(ptr3,"%s",C_Name);//prining catagoryname in final.txt file
-	  While (!feof(ptr2))//till end of product file
+	  
+	  fseek(ptr2,0,SEEK_SET);
+	  while (!feof(ptr2))//till end of product file
 	  {
-	  	fscanf(ptr2,"%s %f %d",P_Name,P_Price,P_ID);
+	  	fscanf(ptr2,"%s %f %d",P_Name,&P_Price,&P_ID);
 	  	if (C_ID==P_ID) // if product is having same ID as catagory only then it will be printed in final.txt file
 	    {
 		 fprintf(ptr3,"%s %f \n",P_Name,P_Price);
@@ -82,12 +83,12 @@ int main()
   		AddCatagory();
   		break;
   	case 2:
-  		AddProduct();
+  		AddProducts();
   		break;
   	case 3:
   		GenerateFinalResult();
   		break;
-  	case 4:
+  	case 4: 
   		exit(EXIT_FAILURE);
   		break;
   	default:
