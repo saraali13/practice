@@ -8,6 +8,7 @@ class Student{
 	public:
 	static int ID;
 	string name;
+	static int a;
 
 	void diplay(){
 		cout<<name<<endl;
@@ -15,6 +16,7 @@ class Student{
 		}
 	static void jk(){
 		cout<<"lalalalala\n";
+		cout<<a<<endl;
 	}
 	
 	static void Id(){
@@ -22,11 +24,13 @@ class Student{
 			print();
 			jk();
 			cout<<endl;
+			a++;
 		}
 	
 };
 
 int Student :: ID=2;
+int Student::a=2;
 
 int main (){
 	Student S1,S2;
