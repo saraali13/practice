@@ -13,9 +13,15 @@ class Student{
 		cout<<name<<endl;
 			
 		}
-		static void Id(){
+	static void jk(){
+		cout<<"lalalalala\n";
+	}
+	
+	static void Id(){
 			cout<<ID<<endl;
 			print();
+			jk();
+			cout<<endl;
 		}
 	
 };
@@ -24,7 +30,7 @@ int Student :: ID=2;
 
 int main (){
 	Student S1,S2;
-	S1.name="sara";
+	S1.name="Sara";
 	S2.name="Ali";
 	S1.diplay();
 	S1.Id();
