@@ -1,9 +1,6 @@
 #include <iostream>
 using namespace std;
 
-void print(){
-	cout<<"Hellooooo";
-}
 class Student{
 	public:
 	static int ID;
