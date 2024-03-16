@@ -2,7 +2,7 @@
 using namespace std;
 
 
-//multipal inheritance
+//multilevel inheritance
 
 class base{
     public:
