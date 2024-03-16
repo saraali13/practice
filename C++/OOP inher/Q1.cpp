@@ -16,7 +16,7 @@ class base{
         cout<<"Duration of class: "<<classDuration<<endl;
       }
 };
-class derived : public base
+class derived : public base //private se sb private hojata h or protected se sb protected
 {
    string st_name;
    int st_rollNo;
