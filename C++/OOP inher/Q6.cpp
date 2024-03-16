@@ -54,6 +54,6 @@ class derived : public base, public basee
 };
 int main()
 {
-    derived d1("Ali",23,"Sara",33,"john",78);
+    derived d1("Ali",23,"Asad",33,"john",78);
     d1.display();
 }
