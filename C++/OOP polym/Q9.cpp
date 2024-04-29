@@ -3,7 +3,7 @@ using namespace std;
 
 // Generic class using a template: class used for all data types
 
-template<typename T>
+template<typename T>//can also use class istead of typename
 class Pair {
 private:
     T first;
