@@ -1,3 +1,7 @@
+getline(cin, author);
+cin.ignore();
+
+
 int * ptr= new int;
 int *char=new int[size];
 
