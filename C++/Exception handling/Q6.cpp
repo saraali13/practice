@@ -1,6 +1,4 @@
 #include <iostream>
-#include <stdexcept>
-
 using namespace std;
 
 int main() {
@@ -13,14 +11,14 @@ int main() {
         cin >> b;
 
         if (b == 0) {
-            throw runtime_error("Cannot divide by zero");
+            throw "Cannot divide by zero";
         }
 
         int result = a / b;
         cout << "Result = " << result << endl;
     } 
-    catch (const runtime_error& e) {
-        cout << "Exception caught: " << e.what() << endl;
+    catch (const char *str) {
+        cout << "Exception caught: "<<str;
     }
 
     return 0;
