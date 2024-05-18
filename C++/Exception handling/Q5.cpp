@@ -10,9 +10,15 @@ void EXP(int test){
         if (test ==0)
         throw 0.00;
     }
-    catch(...){
+        catch(int a)//will work for integers sperately and should be declared beftore all exception caughting
+    {
+        cout<<"Exp == "<<a<<endl;
+    }
+    catch(...)
+    {
         cout<<"Exp caught \n";
     }
+
     
 }
 
