@@ -1,26 +1,33 @@
+//get line func
 getline(cin, author);
 cin.ignore();
 
+clss(const clss &obj)//copy constructor
 
+//DMA
 int * ptr= new int;
 int *char=new int[size];
 
+//Templates
 template <typename T>
 template <typename T, typename U>//for 2 diff data types
+template <>//intead og T use a specific data type, will change its behaviour for that data type
+
+template <typename T, int size>//non type arrgumet in generic class 
+Array<double, 10> doubleArray;// in main (10=int fixed data type
 
 class <int>obj1;//template in class generic class
 //inheritance among genric classes
 template <typename T>
 class Cat : public Animal<T>
 
+//static 
 int car::m=1;//static data member initialization
 void car::display(){}//coutside class function defination
 car::display();//staticfunction calling without an object
-
-clss(const clss &obj)//copy constructor
-
 float Account :: rateOfInterest = 6.5;//definig a static variable outside the class
 
+//polymorphism
 //overridig 
 A *a;
 B b;
@@ -43,9 +50,29 @@ t.xyz=xyz+c1.xyz;
 //exp handling
 try {
   if blablabla
-throw 1;
+throw 1;//class can also be thrown trow c1/c2 an the obj of that class will be catch
 }
-  catch (int a)(...)//for bht sari conditions {
+  catch (int a)(...)//for bht sari conditions //catch(c1 c/c2 c)
     cout<<a;
   }
+try {
+  if blablabla
+throw any type of exception defined in exception header file;
+}
+  catch (exception& e)//for bht sari conditions {
+    cout<<e.what();
+  }
+
+//filing
+ofstream/ifstream myfile("file.txt");//for opening a file in writing mode
+ofstream my file; myfile.open("file.txt",std::mode);//by using open function file will be created if it is not already existing
+if (!myfile); if (!myfile.is_open())//checking the opening of a file
+myfile<<"hi hello";//writing into the file 
+getline(myfile,st);//st=variable of storing the data read from the file
+then cout<<st;
+while(! myfile.eof())//for reading till last of the file use while loop
+myfile.read/wirte((char*)&obj,sizeof(obj))//obj=object of a class we're working in
+  
+myfile.close();//closing the file 
+
 
