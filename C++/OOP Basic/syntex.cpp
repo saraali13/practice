@@ -68,11 +68,29 @@ ofstream/ifstream myfile("file.txt");//for opening a file in writing mode
 ofstream my file; myfile.open("file.txt",std::mode);//by using open function file will be created if it is not already existing
 if (!myfile); if (!myfile.is_open())//checking the opening of a file
 myfile<<"hi hello";//writing into the file 
+
 getline(myfile,st);//st=variable of storing the data read from the file
 then cout<<st;
 while(! myfile.eof())//for reading till last of the file use while loop
-myfile.read/wirte((char*)&obj,sizeof(obj))//obj=object of a class we're working in
   
+myfile.read/wirte((char*)&obj,sizeof(obj))//obj=object of a class we're working in  
 myfile.close();//closing the file 
 
+//vectors
+vector<int>vec1(size if any);
+vector <int> v1={2,3,4};
+vec1.push_back(n);//for entering data 
+vec1.size()//for determinig the size of vector
+vec1.pop_back()//for removing last element 
+vec1.empty()//for checking if a vector is empty
+vec1.clear()//for removing all elements of a vector
+vec1.at(n);//for checking element at a position n
+vec1.front/back();//for checking 1st and last element of a vector
+vc1.erase(position)//for removing a specific number
+v.resize(new size, new elements);
+v1.swap(v2)//for swapping 2 vectors
+vector<int>::iterator iter=vec1.begin();
+vec1.insert(position/iter,num);//inserting a num use position without iterator
+(vector <int> v1)//function parameter
 
+  
