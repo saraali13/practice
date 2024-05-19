@@ -32,6 +32,8 @@ virtual void draw()//virtual funct
 friend void dothis(class c1)//frnd function dec in class
 friend class F;//frnd class dec in a class
 
+class B:virtual public A//for solving diamond problem
+
 //op overloading
 class operator +(const class &C1){
   class t;
