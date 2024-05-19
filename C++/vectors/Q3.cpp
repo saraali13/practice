@@ -1,8 +1,3 @@
-/*
-Name:S. Sara Ali
-ID:23K-0070
-*/
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -31,5 +26,6 @@ int main(){
     display(vec1);
     vector<int>::iterator iter=vec1.begin();
     vec1.insert(iter,5);//will insrt 5 at the begining iter+1= 2nd place=-5
+  // vec1.insert(vec1.begin(),5);//without iterator
    // vec1.insert(iter+1,3,5);//the 3= number of copies it will print 5 3 times after the first element of the vector
 }
