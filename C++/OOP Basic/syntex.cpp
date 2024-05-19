@@ -13,7 +13,9 @@ class <int>obj1;//template in class generic class
 template <typename T>
 class Cat : public Animal<T>
 
-void car::getdata(){}//coutside class function defination
+int car::m=1;//static data member initialization
+void car::display(){}//coutside class function defination
+car::display();//staticfunction calling without an object
 
 clss(const clss &obj)//copy constructor
 
