@@ -1,0 +1,8 @@
+x=(input('enter your name'))
+print(type(x))
+y=int (input("enter your age"))
+print(type(y))
+z=float(input("enter a floating point number"))
+print(type(z))
+c=complex(input("Enter a complex number"))
+print(type(c)
