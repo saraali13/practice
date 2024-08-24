@@ -1,0 +1,9 @@
+y="purple","black"
+print(y)
+print(type(y))
+u=['purple','black']
+print(u)
+print(type(u))
+x={'purple','black','purple'}
+print(x)
+print(type(x)
