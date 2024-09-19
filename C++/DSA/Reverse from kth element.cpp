@@ -10,7 +10,9 @@ struct Node {
 };
 
 // Function to reverse the list before the k-th element
-Node* reverseBeforeKth(Node* head, int k) {
+Node* reverseBeforeKth(Node* head, int k)
+{//after m bhi same hi tareeky se hoga bss curr ko k tk le k jana hota for loop use krk phly
+    
     if (head == nullptr || k <= 1) return head;  // If k <= 1, no reversal is needed
 
     Node* current = head;
