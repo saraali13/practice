@@ -1,60 +1,28 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class SumOfSubsets 
-{
-private:
-    vector<int> set; // The set of numbers
-    int target; // The target sum
-    vector<int> solution; // To store the current subset
+bool isSubsetSum(int set[], int n, int sum) {
+    if (sum == 0)
+        return true;
+    if (n == 0 && sum != 0)
+        return false;
 
-    // Backtracking function to find all subsets that sum to the target
-    void sumOfSubsetsUtil(int index, int currentSum) 
-{
-        if (currentSum == target) 
-        {
-            // Print the current subset
-            cout << "{ ";
-            for (int num : solution)
-                cout << num << " ";
-            cout << "}" << endl;
-            return;
-        }
+    if (set[n - 1] > sum)
+        return isSubsetSum(set, n - 1, sum);
 
-        if (index == set.size() || currentSum > target)
-            return;
+    return isSubsetSum(set, n - 1, sum) ||
+           isSubsetSum(set, n - 1, sum - set[n - 1]);
+}
 
-        // Include the current element
-        solution.push_back(set[index]);
-        sumOfSubsetsUtil(index + 1, currentSum + set[index]);
+int main() {
+    int set[] = {3, 34, 4, 12, 5, 2};
+    int sum = 9;
+    int n = sizeof(set) / sizeof(set[0]);
 
-        // Exclude the current element (backtrack)
-        solution.pop_back();
-        sumOfSubsetsUtil(index + 1, currentSum);
-    }
-
-public:
-    SumOfSubsets(vector<int> inputSet, int sum) 
-{
-        set = inputSet;
-        target = sum;
-  }
-
-    void findSubsets() 
-{
-        sumOfSubsetsUtil(0, 0);
-    }
-};
-
-int main() 
-{
-    vector<int> set = {10, 7, 5, 18, 12, 20, 15};
-    int targetSum = 35;
-
-    SumOfSubsets ss(set, targetSum);
-    cout << "Subsets with sum " << targetSum << ":" << endl;
-    ss.findSubsets();
+    if (isSubsetSum(set, n, sum))
+        cout << "Found a subset with given sum" << endl;
+    else
+        cout << "No subset with given sum" << endl;
 
     return 0;
 }
