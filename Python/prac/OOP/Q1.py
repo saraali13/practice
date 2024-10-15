@@ -12,5 +12,4 @@ a.name = ‘Fatima’
 a.occupation = ‘software developer’
 a.age = 28
 a.info()
-=> Jamal is teacher and is 22 years old
-=> Fatima is software developer and is 28 years old
+
