@@ -1,155 +1,135 @@
 #include <iostream>
 using namespace std;
 
-//no specific order
-struct Node 
-{
+class Node {
+public:
     int data;
     Node* left;
     Node* right;
-
-    Node(int value) : data(value), left(nullptr), right(nullptr) {}
+    
+    Node(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
-// Function to insert a node in binary tree
-bool insertAtLevel(Node* root, int value, int level) 
-{
-    if (!root) return false;
+class BinaryTree {
+private:
+    Node* root;
 
-    if (level == 1) {
-        if (!root->left) {
-            root->left = new Node(value);
-            return true;
-        } else if (!root->right) {
-            root->right = new Node(value);
-            return true;
+    // Helper function to find and delete the deepest node
+    void deleteDeepest(Node* delNode) {
+        if (root == nullptr) return;
+
+        Node* temp = root;
+        Node* parent = nullptr;
+
+        // Traverse to find the deepest rightmost node
+        while (temp != nullptr) {
+            if (temp->left) {
+                parent = temp;
+                temp = temp->left;
+            } else if (temp->right) {
+                parent = temp;
+                temp = temp->right;
+            } else {
+                break;
+            }
         }
-        return false;
+        
+        // Delete the deepest node
+        if (parent->right == temp) {
+            parent->right = nullptr;
+        } else {
+            parent->left = nullptr;
+        }
     }
 
-    return insertAtLevel(root->left, value, level - 1) || insertAtLevel(root->right, value, level - 1);
-}
+    // Find the node to delete and replace its value
+    Node* deleteNodeBT(Node* root, int key) {
+        if (root == nullptr) return nullptr;
 
-void insert(Node* root, int value) {
-    int level = 1;
-    while (!insertAtLevel(root, value, level)) {
-        level++;
-    }
-}
+        Node* target = nullptr;
+        Node* temp = root;
 
-// Function to find the deepest node
-Node* getDeepestNode(Node* root) {
-    if (!root) return nullptr;
-    if (!root->left && !root->right) return root;
+        // Locate the node with the key
+        while (temp != nullptr) {
+            if (temp->data == key) {
+                target = temp;
+                break;
+            }
 
-    Node* left = getDeepestNode(root->left);
-    Node* right = getDeepestNode(root->right);
+            if (temp->left) temp = temp->left;
+            else if (temp->right) temp = temp->right;
+            else break;
+        }
 
-    return right ? right : left;
-}
+        // If the node with the key is found, replace and delete
+        if (target) {
+            int deepestValue = temp->data;
+            deleteDeepest(temp);
+            target->data = deepestValue;
+        }
 
-// Function to delete the deepest node
-bool deleteDeepest(Node* root, Node* dNode) {
-    if (!root) return false;
-
-    if (root->left == dNode) {
-        delete root->left;
-        root->left = nullptr;
-        return true;
-    }
-    if (root->right == dNode) {
-        delete root->right;
-        root->right = nullptr;
-        return true;
+        return root;
     }
 
-    return deleteDeepest(root->left, dNode) || deleteDeepest(root->right, dNode);
-}
+public:
+    BinaryTree() : root(nullptr) {}
 
-// Function to delete a node
-void deleteNode(Node* root, int value) {
-    if (!root) return;
+    void insert(int data) {
+        if (root == nullptr) {
+            root = new Node(data);
+            return;
+        }
 
-    if (root->data == value && !root->left && !root->right) {
-        delete root;
-        root = nullptr;
-        return;
+        Node* temp = root;
+        while (true) {
+            if (data < temp->data) {
+                if (!temp->left) {
+                    temp->left = new Node(data);
+                    break;
+                }
+                temp = temp->left;
+            } else {
+                if (!temp->right) {
+                    temp->right = new Node(data);
+                    break;
+                }
+                temp = temp->right;
+            }
+        }
     }
 
-    Node* targetNode = nullptr;
-    Node* dNode = getDeepestNode(root);
-
-    // Find the node to delete
-    function<void(Node*)> findTarget = [&](Node* node) {
-        if (!node) return;
-        if (node->data == value) targetNode = node;
-        findTarget(node->left);
-        findTarget(node->right);
-    };
-    findTarget(root);
-
-    if (targetNode) {
-        targetNode->data = dNode->data;
-        deleteDeepest(root, dNode);
+    void deleteNode(int key) {
+        root = deleteNodeBT(root, key);
     }
-}
 
-// Function to search for a node
-bool search(Node* root, int value) {
-    if (!root) return false;
-    if (root->data == value) return true;
-    return search(root->left, value) || search(root->right, value);
-}
+    void inorder(Node* node) {
+        if (node == nullptr) return;
+        inorder(node->left);
+        cout << node->data << " ";
+        inorder(node->right);
+    }
 
-// Traversal Functions
-void inorderTraversal(Node* root) {
-    if (!root) return;
-    inorderTraversal(root->left);
-    cout << root->data << " ";
-    inorderTraversal(root->right);
-}
-
-void preorderTraversal(Node* root) {
-    if (!root) return;
-    cout << root->data << " ";
-    preorderTraversal(root->left);
-    preorderTraversal(root->right);
-}
-
-void postorderTraversal(Node* root) {
-    if (!root) return;
-    postorderTraversal(root->left);
-    postorderTraversal(root->right);
-    cout << root->data << " ";
-}
+    void displayInorder() {
+        inorder(root);
+        cout << endl;
+    }
+};
 
 int main() {
-    Node* root = new Node(1);
-    insert(root, 2);
-    insert(root, 3);
-    insert(root, 4);
-    insert(root, 5);
+    BinaryTree bt;
+    bt.insert(10);
+    bt.insert(20);
+    bt.insert(30);
+    bt.insert(40);
+    bt.insert(50);
 
-    cout << "Inorder Traversal: ";
-    inorderTraversal(root);
-    cout << endl;
+    cout << "Original Tree (Inorder): ";
+    bt.displayInorder();
 
-    cout << "Preorder Traversal: ";
-    preorderTraversal(root);
-    cout << endl;
+    bt.deleteNode(20);
 
-    cout << "Postorder Traversal: ";
-    postorderTraversal(root);
-    cout << endl;
-
-    cout << "Searching for 4: " << (search(root, 4) ? "Found" : "Not Found") << endl;
-
-    cout << "Deleting 3" << endl;
-    deleteNode(root, 3);
-
-    cout << "Inorder Traversal after Deletion: ";
-    inorderTraversal(root);
-    cout << endl;
+    cout << "After deleting 20 (Inorder): ";
+    bt.displayInorder();
 
     return 0;
 }
