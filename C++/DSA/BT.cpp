@@ -15,6 +15,32 @@ private:
     Node* root;
 
     // Helper function to find and delete the deepest node
+bool insertHelper(TreeNode* node, int value) {
+        if (node == nullptr) {
+            return false;
+        }
+
+        // Check if the left child is empty, if so insert there
+        if (node->left == nullptr) {
+            node->left = new TreeNode(value);
+            return true;
+        }
+        // Otherwise, move to the left subtree to continue searching
+        if (insertHelper(node->left, value)) {
+            return true;
+        }
+
+        // Check if the right child is empty, if so insert there
+        if (node->right == nullptr) {
+            node->right = new TreeNode(value);
+            return true;
+        }
+        // Otherwise, move to the right subtree to continue searching
+        return insertHelper(node->right, value);
+    }
+
+
+
     void deleteDeepest(Node* delNode) {
         if (root == nullptr) return;
 
@@ -73,12 +99,14 @@ private:
 
 public:
     BinaryTree() : root(nullptr) {}
-
-    void insert(int data) {
+    void insert(int value) {
         if (root == nullptr) {
-            root = new Node(data);
-            return;
+            root = new TreeNode(value); // If tree is empty, create the root
+        } else {
+            insertHelper(root, value); // Use helper to find the correct position
         }
+    }
+
 
         Node* temp = root;
         while (true) {
