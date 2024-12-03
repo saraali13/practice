@@ -6,7 +6,7 @@ plt.xlabel("number")
 plt.ylabel("freq")
 plt.title("Hist Graph",fontsize=10)
 #plt.hist(z,color="r",edgecolor="black",linewidth=2)
-#plt.hist(z,"auto",(0,100),edgecolor="black",linewidth=2)
+#plt.hist(z,"auto",(0,100),edgecolor="black",linewidth=2) #Exclude any values greater than 100 or less than 0.auto=Automatically calculate the best number of bins for the remaining data.
 #plt.hist(z,color="r",bins=6,edgecolor="black",linewidth=2,cumulative=-4)#bins=no of bars
 #plt.hist(z,color="r",bins=6,edgecolor="black",linewidth=2,histtype="step")#type step=no filling clr only border
 plt.hist(z,color="r",bins=6,edgecolor="black",linewidth=2,orientation="horizontal")#bins=no of bars
