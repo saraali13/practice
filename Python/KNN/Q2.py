@@ -23,6 +23,9 @@ x_test_scaled=scaler.fit_transform(x_test)
 n_range=range(1, len(x_train) + 1)
 accuraries=[]
 
+
+#for diff seed best seed or worst seed
+#for loop for seed range then this loop will be inside that for loop
 for k in n_range:
     knn=KNeighborsClassifier(n_neighbors=k)
     knn.fit(x_train_scaled,y_train)
