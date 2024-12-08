@@ -6,7 +6,7 @@ plt.bar(x,z,width=0.3,color="r",edgecolor="pink",linewidth=4,label="usage2")
 plt.scatter(x,y,c=color,s=z,marker="*",edgecolor="black",linewidth=2)
 
 plt.hist(z,color="r",edgecolor="black",linewidth=2)
-plt.hist(z,"auto",(0,100),edgecolor="black",linewidth=2)
+plt.hist(z,"auto",(0,100),edgecolor="black",linewidth=2)#auto= suitable no of bars for the range given
 plt.hist(z,color="r",bins=6,edgecolor="black",linewidth=2,cumulative=-4)#bins=no of bars
 plt.hist(z,color="r",bins=6,edgecolor="black",linewidth=2,histtype="step")#type step=no filling clr only border
 plt.hist(z,color="r",bins=6,edgecolor="black",linewidth=2,orientation="horizontal")#bins=no of bars
