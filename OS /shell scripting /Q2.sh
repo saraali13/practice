@@ -1,8 +1,11 @@
 #!/bin/bash
-read -p "Enter your age: " age
 
-if [ $age -ge 18 ]; then #elif [condition]; then 
-    echo "You are an adult."
+read -p "Enter a number: " num
+
+if [ $num -gt 0 ]; then
+    echo "Positive"
+elif [ $num -lt 0 ]; then
+    echo "Negative"
 else
-    echo "You are a minor."
+    echo "Zero"
 fi
