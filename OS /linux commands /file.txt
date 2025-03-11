@@ -1,0 +1,73 @@
+ls -l (detailed list) ls (list files and dir)
+cd /home/user (change dir )
+mkdir project (make a dir)
+rmdir project (remove a dir)
+rm file.txt (remove a file) rm -r folder (remove a dir)
+cp file.txt /home/user (copies a file or dir)
+mv old.txt new.txt(rename file or dir) mv old.txt /home/user (move file or dir)
+cat file.txt (diplay content  of a file)
+head file.txt (display 1st 10 lines)
+tail file.txt (display last 10 lines)
+clear (clears the terminal screen)
+
+chmod 775 file.txt (Changes permissions of a file/directory)
+4 for	Read (r)
+2 for 	Write (w)
+1 for	Execute (x)
+total 7
+chown user:group file.txt (Changes ownership of a file)
+chgrp groupname file.txt (Changes the group ownership)
+
+ps aux (sisplay active processes)
+top (Displays live system resource usage)
+kill 1234 (Terminates a process by PID)
+killall firefox (kill all instamces of a process by name)
+bg %1 (resumes the background jobs)
+jobs (list abckground jobs)
+
+df -h (display disk space usage)
+du -sh foldername (shows a dir size)
+
+ifconfig (display network interface details)
+ip a (modern alternative of ifconfig)
+ping google.com (test metwork conectivity)
+curl http://etc (transfer data from URLs)
+wget http://etc (downloads data from URLs)
+
+whoami (show current user login)
+who (show all user login)
+sudo adduser SARA (add a new user)
+ude passwd SARA (change user password)
+su ALI (switch user)
+id (display User or group id)
+
+tar -cvf arc.tar folder/ (archives file to .tar form)
+gzip file.txt (compress file .gz)
+gunzip file.txt.gz (Decompress .gz file)
+zip arc.zip file.txt (.zip archives)
+unzip arc.zip (extract .zip archives)
+
+grep ".com" log.txt (search for pattern)
+sed "s/old/new/g" file.txt (editor for text manipulation)
+awk "{print $1}" file .txt (text scanning and processing tool)
+
+uname -a (display system info)
+uptime (How long the system has been running)
+data (current data and time)
+cal (shows calender)
+free (memory usage)
+
+find /home -name "file.txt" (searches for a file in dir)
+locate file.txt (find file ny name)
+which python3.2 (display path of a command)
+
+sudo apt install vim (install packages Debian-based sys)
+sudo yum install httpd (install packages RHEL-based sys)
+sudo dnf inshall nginx (modern alternative of yum)
+
+sudo shutdown now 
+sude reboot
+
+0 (stdin-standard input)
+1 (stdout-standard output)
+2 (stderr-standard error)
