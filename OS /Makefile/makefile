@@ -31,3 +31,7 @@ LineCount.o: LineCount.cpp LineCount.h
 
 clean:
 	rm -f *.o main
+
+//make 
+//./main
+//make clean
