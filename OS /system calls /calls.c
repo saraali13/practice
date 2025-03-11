@@ -32,10 +32,20 @@ write() //writes data
 close() //cose a file
 lseek() //moves file pointer to a specific position
 unlink() //delete a file
-int fd = open("input.txt", O_RDONLY);  // Open file in read-only mode
-ssize_t bytesRead = read(fd, buffer, sizeof(buffer));  // Read file content
-write(STDOUT_FILENO, buffer, bytesRead);  // Write content to console
-close(fd);
+int open("path", int flag, mode_t mode);  // Open file in read-only mode
+ssize_t  read(int fd,void* buffer, size_t count);  // Read file content
+ssize_t write(int fd,void* buffer,size_t count);  // Write content to console
+close(int fd);
+//flags 
+O_RDONLY // Read-only
+O_WRONLY //Write-only
+O_RDWR //Read and Write
+O_CREAT // Create the file if it doesn’t exist
+O_APPEND // Append to the end of the file
+//combine using |
+//mode
+0064 //owner read/write and other read only
+
 
 //IPC
 pipe() //creates a pipe for communication
