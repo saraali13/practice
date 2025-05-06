@@ -1,16 +1,11 @@
-#include <sys/ipc.h>
-#include <sys/shm.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
 #include <stdio.h>
 
 int main() {
-    key_t key = ftok("shmfile", 65);
-    int shmid = shmget(key, 1024, 0666 | IPC_CREAT);
-
-    char *str = (char *)shmat(shmid, NULL, 0);  // Attach
-    printf("Received: %s\n", str);              // Read data
-
-    shmdt(str);
-    shmctl(shmid, IPC_RMID, NULL);  // Destroy shared memory
-
+    int fd = shm_open("myshm", O_RDONLY, 0666);
+    char *ptr = mmap(0, 1024, PROT_READ, MAP_SHARED, fd, 0);
+    printf("Read from shared memory: %s\n", ptr);
     return 0;
 }
