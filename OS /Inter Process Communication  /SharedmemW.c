@@ -1,14 +1,13 @@
-#include <sys/ipc.h>
-#include <sys/shm.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <string.h>
 #include <stdio.h>
 
 int main() {
-    key_t key = ftok("shmfile", 65);  // Generate a unique key
-    int shmid = shmget(key, 1024, 0666 | IPC_CREAT);  // Create shared memory
-
-    char *str = (char *)shmat(shmid, NULL, 0);  // Attach
-    sprintf(str, "Hello from writer!");          // Write data
-    shmdt(str);                                 // Detach
-
+    int fd = shm_open("myshm", O_CREAT | O_RDWR, 0666);
+    ftruncate(fd, 1024);
+    char *ptr = mmap(0, 1024, PROT_WRITE, MAP_SHARED, fd, 0);
+    sprintf(ptr, "Hello Shared Memory!");
     return 0;
 }
