@@ -1,12 +1,16 @@
-#include <signal.h>
 #include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
 
-void handler(int sig) {
-    printf("Caught signal %d\n", sig); // ctrl C
+void handle_sigint(int sig) {
+    printf("Caught SIGINT (Ctrl+C). Exiting cleanly...\n");
+    _exit(0);
 }
 
 int main() {
-    signal(SIGINT, handler);
-    while (1);
+    signal(SIGINT, handle_sigint);
+    while(1) {
+        printf("Running...\n");
+        sleep(1);
+    }
 }
-
