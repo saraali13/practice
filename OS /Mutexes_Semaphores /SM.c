@@ -14,3 +14,14 @@ void *consumer(void *arg) {
     sem_post(&sem);  // Signal done
 }
 
+pthread_mutex_t 
+pthread_mutex_init()//initialoze a mutex
+pthread_mutex_lock()// lock a mutex
+pthread_mutex_unlock()// unloack a mutex
+pthread_mutex_destroy()//destory a muntex
+
+sem_t
+sem_init() //initialize a semaphore
+sem_wait() //dec /wait
+sem_post() //inc /signal/termiates
+sem_destroy() //destroy
